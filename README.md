@@ -16,11 +16,11 @@
 ## Installation
 - clone repository with command:
 
-`https://github.com/Fiklik/python-project-52.git`
+`git clone https://github.com/Fiklik/python-project-52.git`
 
 **or**
 
-`git@github.com:Fiklik/python-project-52.git`
+`git clone git@github.com:Fiklik/python-project-52.git`
 
 - install poetry with command:
 
