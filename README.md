@@ -26,5 +26,5 @@
 
 `python -m pip install poetry`
 
--**make install** - poetry will install all required dependencies for you
+- **make install** - poetry will install all required dependencies for you
 - **make runserver** - start server
