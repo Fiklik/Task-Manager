@@ -7,23 +7,26 @@
 ### CodeClimate status:
 
 
-### Link to web-service
-
+### Link to web-service (under development)
+https://task-manager-qlk7.onrender.com
 
 # Task manager
+**Task manager** is a tool for project management. 
 
+With its help, you can assign tasks to employees and monitor their implementation
 
 ## Installation
 - clone repository with command:
 
-    git clone https://github.com/Fiklik/python-project-52.git
+    `git clone https://github.com/Fiklik/python-project-52.git``
+
     **or**
 
-    git clone git@github.com:Fiklik/python-project-52.git
+    `git clone git@github.com:Fiklik/python-project-52.git``
 
 - install poetry with command:
 
-    python -m pip install poetry
+    `python -m pip install poetry``
 
 - **make install** - poetry will install all required dependencies for you
 - **make runserver** - start server
