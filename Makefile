@@ -4,6 +4,12 @@ runserver:
 linter:
 	poetry run flake8 .
 
+black:
+	poetry run black .
+
+test:
+	poetry run python3 manage.py test task_manager.users
+
 git message:
 	make linter
 	git add .

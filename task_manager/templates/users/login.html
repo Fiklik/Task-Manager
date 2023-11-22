@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block main %}
+
+<div class="container wrapper flex-grow-1">
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message|safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<h1 class="my-4">{% translate 'Log in' %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'warning' %}
+                <ul class="list-unstyled text-{{ message.tags }}">
+                    <li>{{ message|safe }}</li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <div class="mb-3">
+        <label class="form-label" for="id_username">{% translate 'Username' %}</label>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="{% translate 'Username' %}" required="" id="id_username">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="id_password">{% translate 'Password' %}</label>
+        <input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="{% translate 'Password' %}" required="" id="id_password">
+    </div>
+    <input class="btn btn-primary" type="submit" value="{% translate 'Log in' %}">
+</form>
+</div>
+{% if form.errors%}
+    {% for error in form.errors %}
+        <p>{{ error|escape }}</p>
+    {% endfor %}
+{% endif %}
+{% endblock main %}
