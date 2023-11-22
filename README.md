@@ -18,11 +18,11 @@ With its help, you can assign tasks to employees and monitor their implementatio
 ## Installation
 - clone repository with command:
 
-    `git clone https://github.com/Fiklik/python-project-52.git``
+    `git clone https://github.com/Fiklik/python-project-52.git`
 
     **or**
 
-    `git clone git@github.com:Fiklik/python-project-52.git``
+    `git clone git@github.com:Fiklik/python-project-52.git`
 
 - install poetry with command:
 
