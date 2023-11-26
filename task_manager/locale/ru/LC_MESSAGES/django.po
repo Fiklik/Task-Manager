@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-18 21:58+0300\n"
+"POT-Creation-Date: 2023-11-22 22:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,15 +179,15 @@ msgstr "Удаление пользователя"
 msgid "Change user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:33
-msgid "User successfully registered"
+#: task_manager/users/views.py:29
+msgid "User is successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:53
+#: task_manager/users/views.py:44
 msgid "You are logged in"
 msgstr "Вы вошли в систему"
 
-#: task_manager/users/views.py:57
+#: task_manager/users/views.py:51
 msgid ""
 "Please enter the correct username and password. Both fields can be case "
 "sensitive."
@@ -195,22 +195,22 @@ msgstr ""
 "Пожалуйста, введите правильное имя пользователя и пароль. Оба поля могут "
 "быть чувствительны к регистру."
 
-#: task_manager/users/views.py:66
+#: task_manager/users/views.py:62
 msgid "You are logged out"
 msgstr "Вы вышли из системы"
 
-#: task_manager/users/views.py:75 task_manager/users/views.py:108
-msgid "You are not authorized! Please log in."
-msgstr "Вы не авторизованы! Пожалуйста, войдите."
-
-#: task_manager/users/views.py:82 task_manager/users/views.py:115
+#: task_manager/users/views.py:78 task_manager/users/views.py:112
 msgid "You do not have permission to change another user."
 msgstr "У вас нет разрешения на изменение другого пользователя."
 
-#: task_manager/users/views.py:97
+#: task_manager/users/views.py:94
 msgid "User changed successfully"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:128
+#: task_manager/users/views.py:104
+msgid "You are not authorized! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, войдите."
+
+#: task_manager/users/views.py:126
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удален"

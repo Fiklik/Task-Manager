@@ -23,7 +23,7 @@ class TestRegistrationView(TestCase):
     def test_registration_POST(self):
         response = self.client.post(self.url, self.user_data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response["Location"], "/users/login/")
+        self.assertEqual(response["Location"], "/login/")
 
     def test_registration_GET(self):
         response = self.client.get(self.url)
@@ -34,7 +34,7 @@ class TestLoginView(TestCase):
     def setUp(self):
         self.client = Client()
         self.u = User.objects.create_user(username="TestUser", password="testing12")
-        self.url = reverse("login_user")
+        self.url = reverse("login")
 
     def test_login_GET(self):
         response = self.client.get(self.url)
@@ -61,7 +61,7 @@ class TestLogoutView(TestCase):
         self.client = Client()
         self.u = User.objects.create_user(username="TestUser", password="testing12")
         self.client.login(username="TestUser", password="testing12")
-        self.url = reverse("logout_user")
+        self.url = reverse("logout")
 
     def test_logout_POST(self):
         response = self.client.post(self.url)
@@ -79,7 +79,7 @@ class TestUpdateView(TestCase):
         # Test without login
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response["Location"], "/users/")
+        self.assertEqual(response["Location"], "/login/")
 
         # Test with login
         self.client.login(username="TestUser", password="testing12")

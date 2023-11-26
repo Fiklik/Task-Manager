@@ -15,7 +15,7 @@ class TestUsersForms(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, "/users/login/")
+        self.assertEqual(response.url, "/login/")
 
     def test_registration_invalid_form(self):
         c = Client()
