@@ -10,6 +10,9 @@ black:
 test:
 	poetry run python3 manage.py test task_manager.users
 
+test-report:
+	poetry run coverage report
+
 git message:
 	make linter
 	git add .

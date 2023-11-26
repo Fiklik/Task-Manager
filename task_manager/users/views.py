@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
 from django.utils.translation import gettext as _
-from .utils import AuthRequiredMixin, PermissionForUserMixin
+from task_manager.utils import AuthRequiredMixin, PermissionForUserMixin
 
 
 # Create your views here.
@@ -21,7 +21,6 @@ class CreateUserFormView(SuccessMessageMixin, CreateView):
     """Create new user."""
 
     template_name = "users/create.html"
-    # model = User
     form_class = CreateUserForm
     success_url = reverse_lazy("login")
     success_message = _("User is successfully registered")

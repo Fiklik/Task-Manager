@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="container wrapper flex-grow-1">
+        <h1 class="my-4">{% translate "Edit status" %}</h1>
+        <form action="{% url "update_status" pk=status.pk %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label" for="id_name">{% translate "Name" %}</label>
+                <input type="text" name="name" maxlength="50" class="form-control" placeholder="{% translate "Name" %}" required="" id="id_name" value="{{ status.name }}">
+            </div>
+            <input class="btn btn-primary" type="submit" value="{% translate "Edit" %}">
+        </form>
+    </div>
+
+{% if form.errors%}
+    {% for error in form.errors %}
+        <p>{{ error|escape }}</p>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}
