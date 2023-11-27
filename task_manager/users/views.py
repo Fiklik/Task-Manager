@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
 from django.utils.translation import gettext as _
-from task_manager.utils import AuthRequiredMixin, PermissionForUserMixin
+from task_manager.utils import AuthRequiredMixin, PermissionForChangingUserMixin
 
 
 # Create your views here.
@@ -27,19 +27,23 @@ class CreateUserFormView(SuccessMessageMixin, CreateView):
 
 
 class UpdateUserFormView(
-    AuthRequiredMixin, PermissionForUserMixin, SuccessMessageMixin, UpdateView
+    AuthRequiredMixin, PermissionForChangingUserMixin, SuccessMessageMixin, UpdateView
 ):
     template_name = "users/update.html"
     form_class = UpdateUserForm
     model = User
+    no_permission_redirect_url = reverse_lazy("users_list")
+    no_permission_message = _("You do not have permission to change another user.")
     success_url = reverse_lazy("users_list")
     success_message = _("User changed successfully")
 
 
 class DeleteUserView(
-    AuthRequiredMixin, PermissionForUserMixin, SuccessMessageMixin, DeleteView
+    AuthRequiredMixin, PermissionForChangingUserMixin, SuccessMessageMixin, DeleteView
 ):
     template_name = "users/delete.html"
     model = User
     success_url = reverse_lazy("users_list")
     success_message = _("User deleted successfully.")
+    no_permission_redirect_url = reverse_lazy("users_list")
+    no_permission_message = _("You do not have permission to change another user.")

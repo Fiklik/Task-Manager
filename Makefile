@@ -8,7 +8,7 @@ black:
 	poetry run black .
 
 test:
-	poetry run python3 manage.py test task_manager.users
+	poetry run python3 manage.py test
 
 test-report:
 	poetry run coverage report

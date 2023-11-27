@@ -29,7 +29,7 @@ With its help, you can assign tasks to employees and monitor their implementatio
 
 - install poetry with command:
 
-    `python -m pip install poetry``
+    `python -m pip install poetry`
 
 - **make install** - poetry will install all required dependencies for you
 - **make runserver** - start server

@@ -14,12 +14,25 @@ class AuthRequiredMixin(LoginRequiredMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class PermissionForUserMixin(UserPassesTestMixin):
+class PermissionForChangingUserMixin(UserPassesTestMixin):
+    no_permission_message = None
+    no_permission_redirect_url = None
+
     def test_func(self):
         return self.get_object() == self.request.user
 
     def handle_no_permission(self):
-        messages.warning(
-            self.request, _("You do not have permission to change another user.")
-        )
-        return redirect(reverse_lazy("users_list"))
+        messages.warning(self.request, self.no_permission_message)
+        return redirect(self.no_permission_redirect_url)
+
+
+class PermissionForChangingAuthorMixin(UserPassesTestMixin):
+    no_permission_message = None
+    no_permission_redirect_url = None
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def handle_no_permission(self):
+        messages.warning(self.request, self.no_permission_message)
+        return redirect(self.no_permission_redirect_url)

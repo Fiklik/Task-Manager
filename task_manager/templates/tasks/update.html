@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Update task" %}</h1>
+    <form action="{% url "update_task" pk=task.pk %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" for="id_name">{% translate "Name" %}</label>
+            <input type="text" name="name" maxlength="150" class="form-control" placeholder="{% translate "Name" %}" required="" id="id_name" value="{{ task.name }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id_description">{% translate "Description" %}</label>
+            <textarea name="description" cols="40" rows="10" class="form-control" placeholder="{% translate "Description" %}" id="id_description">{{ task.description }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id_status">{% translate "Status" %}</label>
+            <select name="status" class="form-select" required="" id="{{ form.status }}"></select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id_executor">{% translate "Executor" %}</label>
+            <select name="executor" class="form-select" id="{{ form.executor }}"></select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id_labels">{% translate "Label" %}</label>
+            <select name="labels" class="form-select" id="id_labels" multiple=""></select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="{% translate "Update" %}">
+    </form>
+</div>
+{% if form.errors%}
+    {% for error in form.errors %}
+        <p>{{ error|escape }}</p>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}

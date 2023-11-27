@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+{% if not tasks %}
+    <h1 class="my-4">{% translate 'No tasks created' %}</h1>
+{% else %}
+    <h1 class="my-4">{% translate 'Tasks' %}</h1>
+{% endif %}
+    <a class="btn btn-primary mb-3" href="{% url "create_task" %}">{% translate "Create task" %}</a>
+    <div class="card mb-3">
+        <div class="card-body bg-light">
+          <form class="form-inline center" method="get">
+            <div class="mb-3">
+                <label class="form-label" for="id_status">{% translate "Status" %}</label>
+                <select name="status" class="form-select is-valid" id="{{ form.status }}"></select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_executor">{% translate "Executor" %}</label>
+                <select name="executor" class="form-select is-valid" id="{{ form.executor }}"></select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_label">{% translate "Label" %}</label>
+                <select name="label" class="form-select is-valid" id="{{ form.label }}"></select>
+            </div>
+            <div class="mb-3"><div class="form-check"><input type="checkbox" name="self_tasks" class="form-check-input is-valid" id="id_self_tasks">
+                <label class="form-check-label" for="id_self_tasks">Только свои задачи</label>
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="{% translate "Show" %}">
+          </form>
+        </div>
+      </div>
+{% if tasks %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% translate 'ID' %}</th>
+                <th>{% translate 'Name' %}</th>
+                <th>{% translate 'Status' %}</th>
+                <th>{% translate 'Author' %}</th>
+                <th>{% translate 'Executor' %}</th>
+                <th>{% translate 'Date of creation' %}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.pk }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url "update_task" pk=task.pk %}">{% translate 'Edit' %}</a>
+                    <br>
+                    <a href="{% url "delete_task" pk=task.pk %}">{% translate 'Delete' %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock content %}
