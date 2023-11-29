@@ -2,7 +2,13 @@ from .models import Task
 from .forms import TaskForm
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    DetailView,
+)
 from task_manager.utils import AuthRequiredMixin, PermissionForChangingAuthorMixin
 from django.utils.translation import gettext as _
 
@@ -30,7 +36,13 @@ class UpdateTaskView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = TaskForm
     model = Task
     success_url = reverse_lazy("tasks_list")
-    success_message = _("Task was successfully modified")
+    success_message = _("Task was successfully modified.")
+
+
+class DetailTaskView(AuthRequiredMixin, DetailView):
+    model = Task
+    template_name = "tasks/detail.html"
+    context_object_name = "task"
 
 
 class DeleteTaskView(

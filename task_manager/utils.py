@@ -36,3 +36,15 @@ class PermissionForChangingAuthorMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.warning(self.request, self.no_permission_message)
         return redirect(self.no_permission_redirect_url)
+
+
+class PermissionForLabelDeletionMixin(UserPassesTestMixin):
+    no_permission_message = None
+    no_permission_redirect_url = None
+
+    def test_func(self):
+        return self.get_object().task is None
+
+    def handle_no_permission(self):
+        messages.warning(self.request, self.no_permission_message)
+        return redirect(self.no_permission_redirect_url)

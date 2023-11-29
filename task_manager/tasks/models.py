@@ -1,4 +1,5 @@
 from task_manager.statuses.models import Status
+from task_manager.labels.models import Label
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -15,10 +16,13 @@ class Task(models.Model):
         User, on_delete=models.PROTECT, related_name="author", blank=False
     )
     executor = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name="executor", blank=True
+        User, on_delete=models.PROTECT, related_name="executor", null=True, blank=True
     )
     status = models.ForeignKey(
         Status, on_delete=models.PROTECT, related_name="status", blank=False
+    )
+    label = models.ManyToManyField(
+        Label, through="TaskLabel", related_name="labels", blank=True
     )
 
     def __str__(self):
@@ -28,3 +32,8 @@ class Task(models.Model):
         verbose_name = "Task"
         verbose_name_plural = "Tasks"
         ordering = ["pk"]
+
+
+class TaskLabel(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)
