@@ -1,9 +1,9 @@
 from .models import Task
 from .forms import TaskForm
+from .filters import TaskFilter
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import (
-    ListView,
     CreateView,
     UpdateView,
     DeleteView,
@@ -11,13 +11,15 @@ from django.views.generic import (
 )
 from task_manager.utils import AuthRequiredMixin, PermissionForChangingAuthorMixin
 from django.utils.translation import gettext as _
+from django_filters.views import FilterView
 
 
-class TasksListView(AuthRequiredMixin, ListView):
+class TasksListView(AuthRequiredMixin, FilterView):
     template_name = "tasks/index.html"
     model = Task
     context_object_name = "tasks"
     form_class = TaskForm
+    filterset_class = TaskFilter
 
 
 class CreateTaskView(AuthRequiredMixin, SuccessMessageMixin, CreateView):

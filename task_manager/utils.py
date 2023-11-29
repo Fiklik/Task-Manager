@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import ProtectedError
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.translation import gettext as _
 
@@ -38,13 +39,13 @@ class PermissionForChangingAuthorMixin(UserPassesTestMixin):
         return redirect(self.no_permission_redirect_url)
 
 
-class PermissionForLabelDeletionMixin(UserPassesTestMixin):
+class PermissionForDeletionMixin:
     no_permission_message = None
     no_permission_redirect_url = None
 
-    def test_func(self):
-        return self.get_object().task is None
-
-    def handle_no_permission(self):
-        messages.warning(self.request, self.no_permission_message)
-        return redirect(self.no_permission_redirect_url)
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.warning(self.request, self.no_permission_message)
+            return redirect(self.no_permission_redirect_url)

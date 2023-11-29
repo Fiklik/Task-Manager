@@ -3,7 +3,7 @@ from .forms import LabelForm
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from task_manager.utils import AuthRequiredMixin, PermissionForLabelDeletionMixin
+from task_manager.utils import AuthRequiredMixin, PermissionForDeletionMixin
 from django.utils.translation import gettext as _
 
 
@@ -29,7 +29,7 @@ class UpdateLabelView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 class DeleteLabelView(
-    PermissionForLabelDeletionMixin, AuthRequiredMixin, SuccessMessageMixin, DeleteView
+    PermissionForDeletionMixin, AuthRequiredMixin, SuccessMessageMixin, DeleteView
 ):
     template_name = "labels/delete.html"
     model = Label
