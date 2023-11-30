@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n django_bootstrap5 %}
 
 {% block content %}
 
@@ -7,10 +7,7 @@
         <h1 class="my-4">{% translate "Create status" %}</h1>
         <form action="{% url "create_status" %}" method="post">
             {% csrf_token %}
-            <div class="mb-3">
-                <label class="form-label" for="id_name">{% translate "Name" %}</label>
-                <input type="text" name="name" maxlength="50" class="form-control" placeholder="{% translate "Name" %}" required="" id="id_name">
-            </div>
+            {% bootstrap_form form %}
             <input class="btn btn-primary" type="submit" value="{% translate "Create" %}">
         </form>
     </div>
