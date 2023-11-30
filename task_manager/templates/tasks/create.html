@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n django_bootstrap5 %}
 
 {% block content %}
 
@@ -7,26 +7,7 @@
     <h1 class="my-4">{% translate "Create task" %}</h1>
     <form action="{% url "create_task" %}" method="post">
         {% csrf_token %}
-        <div class="mb-3">
-            <label class="form-label" for="id_name">{% translate "Name" %}</label>
-            <input type="text" name="name" maxlength="150" class="form-control" placeholder="{% translate "Name" %}" required="" id="id_name">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="id_description">{% translate "Description" %}</label>
-            <textarea name="description" cols="40" rows="10" class="form-control" placeholder="{% translate "Description" %}" id="id_description"></textarea>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="id_status">{% translate "Status" %}</label>
-            <select name="status" class="form-select" required="" id="{{ form.status }}"></select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="id_executor">{% translate "Executor" %}</label>
-            <select name="executor" class="form-select" id="{{ form.executor }}"></select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="id_labels">{% translate "Label" %}</label>
-            <select name="labels" class="form-select" id="id_labels" multiple=""></select>
-        </div>
+        {% bootstrap_form form %}
         <input class="btn btn-primary" type="submit" value="{% translate "Create" %}">
     </form>
 </div>
