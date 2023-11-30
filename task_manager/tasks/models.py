@@ -31,11 +31,11 @@ class Task(models.Model):
         verbose_name=_("status"),
         blank=False,
     )
-    label = models.ManyToManyField(
+    labels = models.ManyToManyField(
         Label,
         through="TaskLabel",
         related_name=_("labels"),
-        verbose_name=_("Label"),
+        verbose_name=_("Labels"),
         blank=True,
     )
 
