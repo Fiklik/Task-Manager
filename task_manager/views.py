@@ -12,7 +12,7 @@ class MainIndexView(TemplateView):
 
 
 class LoginUserFormView(SuccessMessageMixin, LoginView):
-    template_name = "users/login.html"
+    template_name = "login.html"
     next_page = reverse_lazy("main_index")
     form_class = AuthenticationForm
     success_message = _("You are logged in")
