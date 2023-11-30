@@ -4,9 +4,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Label(models.Model):
     name = models.CharField(
-        max_length=50, unique=True, blank=False, verbose_name="Name"
+        max_length=50, unique=True, blank=False, verbose_name=_("Name")
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created at")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
 
     def __str__(self):
         return self.name

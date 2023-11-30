@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 class Task(models.Model):
     name = models.CharField(
-        max_length=50, unique=True, blank=False, verbose_name=_("Task")
+        max_length=50, unique=True, blank=False, verbose_name=_("Name")
     )
     description = models.TextField(
         max_length=3000, blank=True, verbose_name=_("Description")
@@ -32,7 +32,11 @@ class Task(models.Model):
         blank=False,
     )
     label = models.ManyToManyField(
-        Label, through="TaskLabel", related_name=_("labels"), blank=True
+        Label,
+        through="TaskLabel",
+        related_name=_("labels"),
+        verbose_name=_("Label"),
+        blank=True,
     )
 
     def __str__(self):
