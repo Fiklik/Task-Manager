@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/Fiklik/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Fiklik/python-project-52/actions)
 
 ### Linter status:
-[![Actions Status](https://github.com/Fiklik/python-project-52/actions/workflows/linter-check.yml/badge.svg)](https://github.com/Fiklik/python-project-52/actions)
+[![Actions Status](https://github.com/Fiklik/python-project-52/actions/workflows/linter-and-test-check.yml/badge.svg)](https://github.com/Fiklik/python-project-52/actions)
 
 ### CodeClimate status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/571269021d84a1cddddd/maintainability)](https://codeclimate.com/github/Fiklik/python-project-52/maintainability)
