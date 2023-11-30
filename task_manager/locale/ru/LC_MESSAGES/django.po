@@ -384,7 +384,7 @@ msgstr "Вы не авторизованы! Пожалуйста, войдите
 
 #: task_manager/views.py:18
 msgid "You are logged in"
-msgstr "Вы вошли в систему"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:24
 msgid ""
