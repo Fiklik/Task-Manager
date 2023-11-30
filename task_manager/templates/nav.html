@@ -27,7 +27,7 @@
         <ul class="navbar-nav mr-auto">
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
-                <input class="btn nav-link" type="submit" value="{% translate 'Log out' %}">
+                <input class="btn nav-link" type="submit" value="{% translate 'Logout' %}">
             </form>
         </ul>
         
