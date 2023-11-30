@@ -3,11 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-{% if not tasks %}
-    <h1 class="my-4">{% translate 'No tasks created' %}</h1>
-{% else %}
     <h1 class="my-4">{% translate 'Tasks' %}</h1>
-{% endif %}
     <a class="btn btn-primary mb-3" href="{% url "create_task" %}">{% translate "Create task" %}</a>
     <div class="card mb-3">
         <div class="card-body bg-light">
@@ -21,7 +17,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>{% translate 'ID' %}</th>
+                <th>ID</th>
                 <th>{% translate 'Name' %}</th>
                 <th>{% translate 'Status' %}</th>
                 <th>{% translate 'Author' %}</th>

@@ -6,8 +6,8 @@ from django.forms import CheckboxInput
 
 
 class TaskFilter(django_filters.FilterSet):
-    labels = django_filters.ModelChoiceFilter(
-        queryset=Label.objects.all(), field_name="labels", label="Label"
+    label = django_filters.ModelChoiceFilter(
+        queryset=Label.objects.all(), field_name="label", label=_("Label")
     )
 
     user_self_tasks = django_filters.BooleanFilter(

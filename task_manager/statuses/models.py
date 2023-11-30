@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Status(models.Model):
@@ -11,6 +12,6 @@ class Status(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Status"
-        verbose_name_plural = "Statuses"
+        verbose_name = _("Status")
+        verbose_name_plural = _("Statuses")
         ordering = ["pk"]

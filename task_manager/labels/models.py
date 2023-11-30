@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Label(models.Model):
@@ -11,6 +12,6 @@ class Label(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Label"
-        verbose_name_plural = "Labels"
+        verbose_name = _("Label")
+        verbose_name_plural = _("Labels")
         ordering = ["pk"]

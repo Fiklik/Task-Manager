@@ -3,15 +3,12 @@
 {% load i18n %}
 
 {% block content %}
-{% if not users %}
-<h1 class="my-4">{% translate 'No registered users' %}</h1>
-{% endif %}
-{% if users %}
 <h1 class="my-4">{% translate 'Users' %}</h1>
+{% if users %}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>{% translate 'ID' %}</th>
+            <th>ID</th>
             <th>{% translate 'Username' %}</th>
             <th>{% translate 'Fullname' %}</th>
             <th>{% translate 'Date of creation' %}</th>

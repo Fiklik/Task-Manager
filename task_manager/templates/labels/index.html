@@ -3,11 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-{% if not labels %}
-    <h1 class="my-4">{% translate 'No labels created' %}</h1>
-{% else %}
     <h1 class="my-4">{% translate 'Labels' %}</h1>
-{% endif %}
     <a class="btn btn-primary mb-3" href="{% url "create_label" %}">{% translate "Create label" %}</a>
 {% if labels %}
     <table class="table table-striped">
