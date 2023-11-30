@@ -82,7 +82,7 @@ msgstr "Задача"
 #: task_manager/tasks/models.py:13 task_manager/templates/tasks/create.html:15
 #: task_manager/templates/tasks/create.html:16
 msgid "Description"
-msgstr "Регистрация"
+msgstr "Описание"
 
 #: task_manager/tasks/models.py:15 task_manager/templates/labels/index.html:14
 msgid "Created at"
