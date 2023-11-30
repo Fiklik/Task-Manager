@@ -19,17 +19,15 @@ jobs:
       - run: make linter
       - run: make test
 
-      - name: Create reporter
+      - name: Run linter and tests
         run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-      - name: Test and Report coverage
-        run: |
-          poetry run coverage run -m pytest
-          poetry run coverage lcov -o coverage/lcov.info
-      - name: Sending Reporter
+          make lint
+          make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.2.0
+        if: github.ref_name == 'main'
         env:
-          GITHUB_TOKEN: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          ./cc-test-reporter after-build -r "$GITHUB_TOKEN" -t lcov
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
