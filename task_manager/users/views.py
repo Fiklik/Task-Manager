@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.models import User
+from task_manager.users.models import User
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
 from django.utils.translation import gettext as _
 from task_manager.utils import AuthRequiredMixin, PermissionForChangingUserMixin
