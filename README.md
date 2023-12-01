@@ -15,7 +15,9 @@ With its help, you can assign tasks to employees and monitor their implementatio
 ```
     git clone https://github.com/Fiklik/python-project-52.git
 ```
+
     **or**
+
 ```
     git clone git@github.com:Fiklik/python-project-52.git
 ```
