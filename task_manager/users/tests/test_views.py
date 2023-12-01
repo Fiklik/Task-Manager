@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 # from django.contrib.auth import get_user
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 
 
 # from django.contrib.messages import get_messages
@@ -33,7 +33,9 @@ class TestRegistrationView(TestCase):
 class TestLoginView(TestCase):
     def setUp(self):
         self.client = Client()
-        self.u = User.objects.create_user(username="TestUser", password="testing12")
+        self.u = get_user_model().objects.create_user(
+            username="TestUser", password="testing12"
+        )
         self.url = reverse("login")
 
     def test_login_GET(self):
@@ -59,7 +61,9 @@ class TestLoginView(TestCase):
 class TestLogoutView(TestCase):
     def setUp(self) -> None:
         self.client = Client()
-        self.u = User.objects.create_user(username="TestUser", password="testing12")
+        self.u = get_user_model().objects.create_user(
+            username="TestUser", password="testing12"
+        )
         self.client.login(username="TestUser", password="testing12")
         self.url = reverse("logout")
 
@@ -72,7 +76,9 @@ class TestLogoutView(TestCase):
 class TestUpdateView(TestCase):
     def setUp(self) -> None:
         self.client = Client()
-        self.u = User.objects.create_user(username="TestUser", password="testing12")
+        self.u = get_user_model().objects.create_user(
+            username="TestUser", password="testing12"
+        )
         self.url = reverse("update_user", kwargs={"pk": self.u.pk})
 
     def test_update_GET(self):
@@ -115,17 +121,17 @@ class TestUpdateView(TestCase):
             },
         )
         self.assertEqual(post_response.status_code, 302)
-        updated_user = User.objects.get(username="TestUser")
+        updated_user = get_user_model().objects.get(username="TestUser")
         self.assertEqual("Test", updated_user.first_name)
 
 
 class TestDeleteUserView(TestCase):
     def setUp(self) -> None:
         self.client = Client()
-        self.u = User.objects.create_user(
+        self.u = get_user_model().objects.create_user(
             username="TestUser", first_name="Test", password="testing12"
         )
-        self.u2 = User.objects.create_user(
+        self.u2 = get_user_model().objects.create_user(
             username="TestUser2", first_name="Test", password="testing12"
         )
         self.url = reverse("delete_user", kwargs={"pk": self.u.pk})
@@ -149,7 +155,7 @@ class TestDeleteUserView(TestCase):
     def test_delete_POST(self):
         self.client.login(username="TestUser2", password="testing12")
         user_pk = self.u2.pk
-        users_pk = User.objects.values_list("pk")
+        users_pk = get_user_model().objects.values_list("pk")
         response = self.client.post(self.url2)
         self.assertEqual(response.status_code, 302)
         self.assertNotIn(user_pk, users_pk)
