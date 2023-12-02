@@ -11,12 +11,10 @@
 With its help, you can assign tasks to employees and monitor their implementation
 
 ## Installation
-- clone repository with command:
+- clone repository with one of the commands:
 ```
     git clone https://github.com/Fiklik/python-project-52.git
 ```
-
-    **or**
 
 ```
     git clone git@github.com:Fiklik/python-project-52.git
