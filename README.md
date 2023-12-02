@@ -26,4 +26,5 @@ With its help, you can assign tasks to employees and monitor their implementatio
 ```
 
 - **make install** - poetry will install all required dependencies for you
-- **make runserver** - start server
+- **make runserver** - start server for development
+- **make start** - start production server
