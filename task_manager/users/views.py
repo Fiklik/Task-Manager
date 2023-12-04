@@ -17,7 +17,7 @@ class UsersListView(ListView):
     ordering = ["pk"]
 
 
-class CreateUserFormView(SuccessMessageMixin, CreateView):
+class CreateUserView(SuccessMessageMixin, CreateView):
     """Create new user."""
 
     template_name = "users/create.html"
@@ -26,7 +26,7 @@ class CreateUserFormView(SuccessMessageMixin, CreateView):
     success_message = _("User is successfully registered")
 
 
-class UpdateUserFormView(
+class UpdateUserView(
     AuthRequiredMixin, PermissionForChangingUserMixin, SuccessMessageMixin, UpdateView
 ):
     template_name = "users/update.html"
