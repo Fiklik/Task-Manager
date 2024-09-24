@@ -4,6 +4,9 @@ runserver:
 start:
 	poetry run gunicorn task_manager.wsgi:application
 
+install:
+	poetry install
+
 linter:
 	poetry run flake8 .
 
