@@ -26,5 +26,6 @@ With its help, you can assign tasks to employees and monitor their implementatio
 ```
 
 - **make install** - poetry will install all required dependencies for you
+- create file '.env' and paste in secret key for django application to run (see '.env_example' file)
 - **make runserver** - start server for development
 - **make start** - start production server
